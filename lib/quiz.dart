@@ -13,6 +13,12 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   // use widget to be more restrictive with types. In this case var is not allowed
   Widget? activeScreen;
+
+  // every widget has a lifecycle
+  // initState => Executed by Flutter when the StatefulWidget's State object is initialized
+  // build => Executed when the widget is build for the first time and after a setState changes
+  // dispose => Executed just before the widget will be deleted
+
   @override
   void initState() {
     // executed only once
