@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/question_screen.dart';
+import 'package:quiz_app/results_screen.dart';
 import 'package:quiz_app/start_screen.dart';
 
 class Quiz extends StatefulWidget {
@@ -32,9 +33,25 @@ class _QuizState extends State<Quiz> {
   void switchScreen() {
     setState(() {
       // change the active screen
-      activeScreen = QuestionScreen(onSelectAnswer: onSelectAnswer);
+      activeScreen = QuestionScreen(
+        onSelectAnswer: onSelectAnswer,
+        onFinish: goToResultScreen,
+      );
     });
     //on setState change the build method is called again
+  }
+
+  void goToResultScreen() {
+    setState(() {
+      activeScreen = ResultScreen(
+        onRestart: () {
+          setState(() {
+            activeScreen = StartScreen(switchScreen);
+          });
+        },
+        answers: selectedAnswers,
+      );
+    });
   }
 
   void onSelectAnswer(String answer) {
