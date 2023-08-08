@@ -9,9 +9,10 @@ class QuestionScreen extends StatefulWidget {
   }
 }
 
+// state connected to question screen
 class _QuestionState extends State<QuestionScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Text('Question screen');
   }
 }

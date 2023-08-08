@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/question_screen.dart';
 import 'package:quiz_app/start_screen.dart';
 
 class Quiz extends StatefulWidget {
@@ -10,6 +11,23 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+  // use widget to be more restrictive with types. In this case var is not allowed
+  Widget? activeScreen;
+  @override
+  void initState() {
+    // executed only once
+    activeScreen = StartScreen(switchScreen);
+    super.initState();
+  }
+
+  void switchScreen() {
+    setState(() {
+      // change the active screen
+      activeScreen = const QuestionScreen();
+    });
+    //on setState change the build method is called again
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +40,7 @@ class _QuizState extends State<Quiz> {
               colors: [Colors.blue, Colors.purple],
             ),
           ),
-          child: const StartScreen(),
+          child: activeScreen,
         ),
       ),
     );
