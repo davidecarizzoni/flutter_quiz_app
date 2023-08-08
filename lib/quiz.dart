@@ -13,6 +13,9 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   // use widget to be more restrictive with types. In this case var is not allowed
   Widget? activeScreen;
+  Widget? questionScreen;
+  final List<String> selectedAnswers =
+      []; // final. Not allowed to ri assign variable, only add
 
   // every widget has a lifecycle
   // initState => Executed by Flutter when the StatefulWidget's State object is initialized
@@ -29,9 +32,17 @@ class _QuizState extends State<Quiz> {
   void switchScreen() {
     setState(() {
       // change the active screen
-      activeScreen = const QuestionScreen();
+      activeScreen = QuestionScreen(onSelectAnswer: onSelectAnswer);
     });
     //on setState change the build method is called again
+  }
+
+  void onSelectAnswer(String answer) {
+    setState(() {
+      selectedAnswers.add(answer);
+    });
+
+    print(selectedAnswers);
   }
 
   @override
