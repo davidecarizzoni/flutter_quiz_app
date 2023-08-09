@@ -49,7 +49,7 @@ class _QuizState extends State<Quiz> {
             activeScreen = StartScreen(switchScreen);
           });
         },
-        answers: selectedAnswers,
+        chosenAnswers: selectedAnswers,
       );
     });
   }
