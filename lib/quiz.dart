@@ -11,6 +11,8 @@ class Quiz extends StatefulWidget {
   }
 }
 
+//_ using to indicate a private things (like class but also variables)
+// _QuizState can be used only in this file, by the QuizWidget and not outside
 class _QuizState extends State<Quiz> {
   // use widget to be more restrictive with types. In this case var is not allowed
   Widget? activeScreen;
